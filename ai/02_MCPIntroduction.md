@@ -1,45 +1,51 @@
 # What is Model Context Protocol (MCP)
 
-![image](../img/what_is_mcp.gif)
+
 MCP is an open standard introduced by Anthropic.
-Just as USB-C offers a standardized way to connect devices to various accessories, MCP standardize how AI applications (chatbots, IDE assistants, or custom agents) connect with external tools, data sources, and systems.
+MCP standardize how AI applications (chatbots, IDE assistants, or custom agents) connect with external tools, data sources, and systems. Just like USB-C offers a standardized way to connect devices to various accessories.
+
+<img src="../img/mcp_typec_for_llm.png"  width="600" height="auto">
+
 
 # General Architecture
 
-![image](../img/mcp_host.webp)
-
 MCP follows a client-server architecture and consist of below key component:
 
-## Host
+<img src="../img/mcp_architecture.png"  width="600" height="auto">
+
+### Host
+
 Host represents any AI app (Claude desktop, Cursor) that provides an environment for AI interactions, accesses tools and data, and runs the MCP Client.
 
-## Client
+### Client
+
 They maintain dedicated, one-to-one connections with MCP servers.
 
-## Server
+### Server
+  
 Lightweight servers exposing specific capabilities and provides access to data like:
 
- - Tools: Enable LLMs to perform actions through your server.
+  - Tools: Enable LLMs to perform actions through your server.
 
- - Resources: Expose data and content from your servers to LLMs.
+  - Resources: Expose data and content from your servers to LLMs.
 
- - Prompts: Create reusable prompt templates and workflows.
+  - Prompts: Create reusable prompt templates and workflows.
 
-![image](../img/mcp_server_capabilities.webp)
 
 
 ## Client-Server Communication
 
-![image](../img/mcp_server_client_communication.webp)
+<img src="../img/mcp_server_client_communication.webp"  width="600" height="auto">
+
 
  - The client sends an initial request to learn server capabilities.
 
  - The server responds with details about its available tools, resources, prompts, and parameters
-   - For instance, a Weather API server, when invoked, can reply back with available “tools”, “prompts templates”, and any other resources for the client to use.
+   - For instance, a Weather API server, when invoked, can reply back with available “tools” get_weather_by_location
 
 # Sequencial Diagram
 
-![image](../img/mcp_sequencial_diagram.svg)
+<img src="../img/mcp_sequencial_diagram.svg"  width="1200" height="auto">
 
 # Ecosystem
 
@@ -60,21 +66,25 @@ There are a lot of servers already and we can use them through the following app
   - ...
 
 - Marketplace
+  
+  - [MCP.so](https://mcp.so/)
   - [MCP Marketplace - Cline](https://cline.bot/mcp-marketplace)
   - [MCP Market | Discover Top MCP Servers](https://mcpmarket.com/)
 - Develope by yourself
 
 # Demo
-## Search iPhone Prices Through Browser
+## Search iPhone Prices
 
 In this case, I will use the Browser Automation MCP server for  and then search for the iPhone's price on the official Apple website.
 
-![video](../video/mcp_demo1_webautomation.mov)
- 
+ <video controls>
+  <source src="../video/mcp_demo1_webautomation.mov" type="video/mp4">
+</video>
 
 # Reference
 
 https://blog.dailydoseofds.com/p/visual-guide-to-model-context-protocol
+https://norahsakal.com/blog/mcp-vs-api-model-context-protocol-explained/
 
 ```mermaid
 sequenceDiagram
